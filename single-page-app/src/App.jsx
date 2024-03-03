@@ -1,31 +1,50 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Layout } from "./components/Layout";
+import { Home } from "./pages/Home";
+import { About } from "./pages/About";
+import { Courses } from "./pages/Courses";
+import { Instructor } from "./pages/Instructor";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <body class="flex flex-col justify-center items-center h-screen ">
-      <div class="mb-4">
-        <h1 className="text-3xl font-bold text-blue-500 text-center">
-          Hello world from TailwindCSS
-        </h1>
-        <h4 className="text-1xl font-bold text-blue-500 text-center">
-          Press the button to increase the count
-        </h4>
-      </div>
-
-      <div class="whitespace-pre">
-        <button
-          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          count is {count}
-        </button>
-      </div>
-    </body>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Layout>
+                <Home />
+              </Layout>
+            }
+          />
+          <Route
+            path="/about"
+            element={
+              <Layout>
+                <About />
+              </Layout>
+            }
+          />
+          <Route
+            path="/courses"
+            element={
+              <Layout>
+                <Courses />
+              </Layout>
+            }
+          />
+          <Route
+            path="/instructor"
+            element={
+              <Layout>
+                <Instructor />
+              </Layout>
+            }
+          />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 
